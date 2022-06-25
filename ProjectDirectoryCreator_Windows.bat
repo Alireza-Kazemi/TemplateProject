@@ -8,9 +8,9 @@ mkdir "%id%"\DataFiles\Archive
 mkdir "%id%"\DataFiles\L1_Name_R1W1
 mkdir "%id%"\DataFiles\L2_Name_R1W2
 
-mkdir "%id%"\Documents\Archive
-mkdir "%id%"\Documents\Reports(Docs)
-mkdir "%id%"\Documents\"Trackings&Summaries"
+mkdir "%id%"\"Documents %id%"\Archive
+mkdir "%id%"\"Documents %id%"\Reports(Docs)
+mkdir "%id%"\"Documents %id%"\"Trackings&Summaries"
 
 mkdir "%id%"\ExtraFiles\Archive
 

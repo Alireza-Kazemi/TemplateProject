@@ -16,7 +16,7 @@ This is bat script can be used to create a directory for a new project based on 
 						  \L2_Name_R1W2	
 						  
 				%----> Sync this directory with your cloud storage
-				\Documents				
+				\Documents projectName				
 						  \Archive
 						  \Reports(Docs)
 						  \Tracking&Summaries
