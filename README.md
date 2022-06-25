@@ -13,8 +13,8 @@ This is bat script can be used to create a directory for a new project based on 
 						  \Archive
 						  \L1_Name_R1W1
 						  \L2_Name_R1W2
-						  
-				\Documents						----> Sync this directory with your cloud storage
+----						  
+				\Documents ----> Sync this directory with your cloud storage
 						  \Archive
 						  \Reports(Docs)
 						  \Tracking&Summaries
