@@ -3,21 +3,26 @@
 This repository contains scripts for automatically creating a standardized project folder structure.  
 It supports both **Windows** and **macOS/Linux** platforms. 
 
-<ProjectName>/
-├── Codes(Github)/ %----> Sync this directory with your Github
-│ ├── Archive/
-│ ├── L1_Nameit/
-│ └── L2_Nameit/
-├── DataFiles/
-│ ├── Archive/
-│ ├── L1_Name_R1W1/
-│ └── L2_Name_R1W2/
-├── Documents <ProjectName>/
-│ ├── Archive/
-│ ├── Reports(Docs)/
-│ └── Trackings&Summaries/
-└── ExtraFiles/
-└── Archive/
+	\projectName
+		%----> Sync this directory with your Github
+		\Codes(Github)
+					  \Archive
+					  \L1_Nameit
+					  \L2_Nameit
+					  
+		\DataFiles
+				  \Archive
+				  \L1_Name_R1W1
+				  \L2_Name_R1W2	
+				  
+		%----> Sync this directory with your cloud storage
+		\Documents projectName				
+				  \Archive
+				  \Reports(Docs)
+				  \Tracking&Summaries
+				  
+		\ExtraFiles
+				   \Archive
 
 ## 📂 Project Structure Overview
 
@@ -109,23 +114,4 @@ This folder structure is designed to keep **code, documents, and data organized 
 MIT License. Feel free to modify and use in your own projects.
 
 
-<!-- 	\projectName
-		%----> Sync this directory with your Github
-		\Codes(Github)
-					  \Archive
-					  \L1_Nameit
-					  \L2_Nameit
-					  
-		\DataFiles
-				  \Archive
-				  \L1_Name_R1W1
-				  \L2_Name_R1W2	
-				  
-		%----> Sync this directory with your cloud storage
-		\Documents projectName				
-				  \Archive
-				  \Reports(Docs)
-				  \Tracking&Summaries
-				  
-		\ExtraFiles
-				   \Archive -->
+
