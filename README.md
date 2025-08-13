@@ -1,11 +1,7 @@
 # Project Folder Structure Creator
 
 This repository contains scripts for automatically creating a standardized project folder structure.  
-It supports **Windows** and **macOS/Linux**.
-
-## 📂 Folder Structure
-
-The scripts will create the following structure based on your chosen project name:
+It supports both **Windows** and **macOS/Linux** platforms. 
 
 <ProjectName>/
 ├── Codes(Github)/ %----> Sync this directory with your Github
@@ -23,8 +19,52 @@ The scripts will create the following structure based on your chosen project nam
 └── ExtraFiles/
 └── Archive/
 
+## 📂 Project Structure Overview
+
+This folder structure is designed to keep **code, documents, and data organized and clearly separated**, making it easier to manage, collaborate, and maintain over time.
+
+```
+<ProjectName>/
+├── Codes(Github)/				###### Code Directory ######---> Sync this directory with your Github
+│   ├── Archive/               		# Old or deprecated code
+│   ├── L1_Nameit/              	# Level 1 code modules
+│   └── L2_Nameit/              	# Level 2 code modules
+├── DataFiles/					###### Data Directory ######
+│   ├── Archive/                	# Old datasets or backups
+│   ├── L1_Name_R1W1/           	# Data for Level 1, Run 1, Week 1
+│   └── L2_Name_R1W2/           	# Data for Level 2, Run 1, Week 2
+├── Documents <ProjectName>/	###### Documents Directory ######
+│   ├── Archive/                	# Old or obsolete documents
+│   ├── Reports(Docs)/          	# Reports and written outputs
+│   └── Trackings&Summaries/    	# Logs, summaries, and progress tracking
+└── ExtraFiles/					###### Miscellaneous Supporting Files Directory ######
+    └── Archive/                	# Old or obsolete files
+```
 
 ---
+
+### ✅ Benefits of This Structure
+
+- **Separation of Concerns**  
+  Code, data, and documents live in distinct top-level folders. This keeps your Git repository lightweight and avoids accidental inclusion of large or sensitive files.
+
+- **GitHub-Friendly**  
+  The `Codes(Github)` folder is designed to be tracked in Git, while `DataFiles` remains separate, preventing repository bloat.
+
+- **Scalable & Organized**  
+  Multiple levels (L1, L2) allow you to structure experiments, modules, or development stages without clutter.
+
+- **Easy Archiving**  
+  Dedicated `Archive` folders at every level let you store old versions without mixing them with active work.
+
+- **Cross-Platform Compatibility**  
+  Works on both Windows and macOS/Linux with provided setup scripts.
+
+- **Clear Collaboration Workflow**  
+  Team members know exactly where to put code, where to store raw/processed data, and where to keep documentation.
+---
+
+# How to use it
 
 ## 🖥 Windows Instructions
 
