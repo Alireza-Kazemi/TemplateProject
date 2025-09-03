@@ -1,35 +1,44 @@
-%% Initialize codes running from Github to get required directories
+%% PathInitializer.m
+% Initialize codes running from Github to get required directories
+% Saves and loads path info from pathInfo.txt
 
-% --- Set Path Variables ---
-% Get the primary reading directory
-rdDir = uigetdir([], "Choose Reading Directory");
-if rdDir == 0, error("No reading folder selected."); end
-rdDir = string(rdDir) + filesep;
+% --- Path to config file ---
+configFile = fullfile(pwd, 'pathInfo.txt');
 
-% Get the raw data directory, starting the search in the reading directory
-rawDataDir = uigetdir(rdDir, "Choose Raw Data Directory");
-if rawDataDir == 0, error("No raw data folder selected."); end
-rawDataDir = string(rawDataDir) + filesep;
-
-% Get the writing directory, starting the search in the reading directory
-wrDir = uigetdir(rdDir, "Choose Writing Directory");
-if wrDir == 0, error("No writing folder selected."); end
-wrDir = string(wrDir) + filesep;
-
-% --- Ask user for toolbox name ---
-toolboxName = input('Enter the name of the toolbox to check: ', 's');
-
-% --- Check if the toolbox is in the MATLAB path ---
-if isempty(which(toolboxName))
-    fprintf('%s toolbox not found in the path.\n', toolboxName);
-    folderPath = uigetdir(pwd, sprintf('Select the %s toolbox folder', toolboxName));
-    if folderPath ~= 0
-        addpath(genpath(folderPath));
-        savepath;
-        fprintf('%s toolbox added to the path.\n', toolboxName);
-    else
-        fprintf('%s toolbox not added. Please ensure it is accessible.\n', toolboxName);
-    end
+if isfile(configFile)
+    % --- Load from pathInfo.txt ---
+    disp('Loading paths from pathInfo.txt ...');
+    fid = fopen(configFile, 'r');
+    rdDir = string(fgetl(fid));
+    rawDataDir = string(fgetl(fid));
+    wrDir = string(fgetl(fid));
+    fclose(fid);
 else
-    fprintf('%s toolbox is already in the path.\n', toolboxName);
+    % --- Ask User for Paths ---
+    rdDir = uigetdir([], "Choose Reading Directory");
+    if rdDir == 0, error("No reading folder selected."); end
+    rdDir = string(rdDir) + filesep;
+
+    rawDataDir = uigetdir(rdDir, "Choose Raw Data Directory");
+    if rawDataDir == 0, error("No raw data folder selected."); end
+    rawDataDir = string(rawDataDir) + filesep;
+
+    wrDir = uigetdir(rdDir, "Choose Writing Directory");
+    if wrDir == 0, error("No writing folder selected."); end
+    wrDir = string(wrDir) + filesep;
+
+    % --- Save to pathInfo.txt ---
+    fid = fopen(configFile, 'w');
+    fprintf(fid, '%s\n', rdDir);
+    fprintf(fid, '%s\n', rawDataDir);
+    fprintf(fid, '%s\n', wrDir);
+    fclose(fid);
+    disp('Path information saved to pathInfo.txt');
 end
+
+% --- Summary Output ---
+disp("----- PATHS INITIALIZED -----");
+disp("Reading Directory: " + rdDir);
+disp("Raw Data Directory: " + rawDataDir);
+disp("Writing Directory: " + wrDir);
+disp("-----------------------------");
