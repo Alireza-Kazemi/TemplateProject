@@ -1,3 +1,9 @@
+# Standardized format for Code and Data maintenance
+Requirements:
+- Create a Github account.
+- Install Github Desktop.
+- Create your project folder structure (see the following)
+
 # Project Folder Structure Creator
 
 This repository contains scripts for automatically creating a standardized project folder structure.  
