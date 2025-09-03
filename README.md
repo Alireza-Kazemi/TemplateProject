@@ -2,6 +2,7 @@
 Requirements:
 - Create a Github account.
 - Install Github Desktop.
+- Take a look at the Github introductory page ([here](https://docs.github.com/en/get-started/start-your-journey/hello-world))
 - Create your project folder structure (see the following)
 
 # Project Folder Structure Creator
