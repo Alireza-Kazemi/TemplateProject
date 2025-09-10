@@ -1,42 +1,51 @@
+# PathInitializer.py
+# Initialize codes running from Github to get required directories
+# Saves and loads path info from pathInfo.txt
+
 import os
-from tkinter import filedialog, Tk
+from pathlib import Path
+from tkinter import Tk, filedialog
 
-# Hide the root Tk window
-root = Tk()
-root.withdraw()
+def choose_dir(initialdir=None, title="Choose Directory"):
+    """Open a folder selection dialog and return the chosen directory."""
+    root = Tk()
+    root.withdraw()  # hide the main tkinter window
+    folder = filedialog.askdirectory(initialdir=initialdir, title=title)
+    root.destroy()
+    if not folder:
+        raise RuntimeError(f"No {title.lower()} selected.")
+    return os.path.join(folder, '')
 
-# --- Set Path Variables ---
-rdDir = filedialog.askdirectory(title="Choose Reading Directory")
-if not rdDir:
-    raise Exception("No reading folder selected")
 
-rawDataDir = filedialog.askdirectory(initialdir=rdDir, title="Choose Raw Data Directory")
-if not rawDataDir:
-    raise Exception("No raw data folder selected")
+config_file = Path.cwd() / "pathInfo.txt"
 
-wrDir = filedialog.askdirectory(initialdir=rdDir, title="Choose Writing Directory")
-if not wrDir:
-    raise Exception("No writing folder selected")
+if config_file.is_file():
+    # --- Load from pathInfo.txt ---
+    print("Loading paths from pathInfo.txt ...")
+    with open(config_file, "r") as f:
+        rdDir = f.readline().strip()
+        rawDataDir = f.readline().strip()
+        wrDir = f.readline().strip()
+else:
+    # --- Ask User for Paths ---
+    rdDir = choose_dir(title="Choose Reading Directory")
 
-# --- Ask user for toolbox name ---
-toolboxName = input("Enter the name of the toolbox to check: ")
+    rawDataDir = choose_dir(initialdir=rdDir, title="Choose Raw Data Directory")
 
-# --- Check if toolbox is importable ---
-try:
-    __import__(toolboxName)
-    print(f"{toolboxName} toolbox is already available")
-except ImportError:
-    print(f"{toolboxName} toolbox not found")
-    folderPath = filedialog.askdirectory(title=f"Select the {toolboxName} toolbox folder")
-    if folderPath:
-        import sys
-        sys.path.append(folderPath)
-        print(f"{toolboxName} toolbox added to sys.path")
-    else:
-        print(f"{toolboxName} toolbox not added. Please ensure it is accessible.")
+    wrDir = choose_dir(initialdir=rdDir, title="Choose Writing Directory")
 
-# --- Summary ---
+    # --- Save to pathInfo.txt ---
+    with open(config_file, "w") as f:
+        f.write(f"{rdDir}\n")
+        f.write(f"{rawDataDir}\n")
+        f.write(f"{wrDir}\n")
+    print("Path information saved to pathInfo.txt")
+
+# --- Summary Output ---
 print("----- PATHS INITIALIZED -----")
-print(f"Reading Directory: {rdDir}")
-print(f"Raw Data Directory: {rawDataDir}")
-print(f"Writing Directory: {wrDir}")
+print("Reading Directory: " + rdDir)
+print("Raw Data Directory: " + rawDataDir)
+print("Writing Directory: " + wrDir)
+print("-----------------------------")
+
+
